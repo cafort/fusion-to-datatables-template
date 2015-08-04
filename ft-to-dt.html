@@ -1,0 +1,41 @@
+<!-- Scripts and stylesheets: Datatables, jQuery, responsive Datatables plugin. -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/1.0.6/css/dataTables.responsive.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/1.0.6/js/dataTables.responsive.min.js"></script>
+		
+		
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#mytable').dataTable( {
+	        "ajax": {
+	        //build URL query by replacing bracketed text with Table ID and your Fusion API Key.
+	            "url": "https://www.googleapis.com/fusiontables/v2/query?sql=SELECT%20*%20FROM[TABLE ID&key=[API KEY]",
+	       //specifies where in JSON response to pull from
+	            "dataSrc": "rows",
+	            "dataType": "jsonp"
+				
+	            
+	        }
+	    } );
+	} );
+</script>
+
+<!--  Adding dt-responsive class triggers responsive styling and collapsible rows.
+data-order: option parameter to set initial sort. [[columnindex, "order"]]
+For responsive tables set whether columns are visible or collapsed using class in <th>: all=expanded, "none"=open on click -->
+
+<table id="mytable" class="dt-responsive display" cellspacing="0" width="100%" data-order='[[0, "dsc"]]'>
+	        <thead>
+	            <tr>
+	                <th class="all">Column 0</th>
+	                <th class="all">Column 1</th>
+	                <th class="all">Column 2</th>
+	                <th class="none">Column 3</th>
+	                <th class="none">Column 4</th>
+	            </tr>
+	        </thead>
+	        
+</table>
